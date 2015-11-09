@@ -17,5 +17,6 @@ class DogTest extends \PHPUnit_Framework_TestCase
         Dog::borrowMe();
         $dog2 = Dog::borrowMe();
         $this->assertFalse($dog2);
+
     }
 }
