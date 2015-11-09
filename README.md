@@ -1,2 +1,2 @@
 # DesignPatterns
-PHP implementation of some popular design patterns
+PHP7 implementation of some popular design patterns
