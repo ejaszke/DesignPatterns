@@ -8,15 +8,24 @@ class DogTest extends \PHPUnit_Framework_TestCase
 {
     public function testCanBorrowDog()
     {
-        $dog = Dog::borrowMe();
-        $this->assertInstanceOf('Singleton\Dog', $dog);
+        $dog = Dog::getInstance();
+        $this->assertTrue($dog->borrowMe());
     }
 
     public function testCantBorrowAlreadyBorrowedDog()
     {
-        Dog::borrowMe();
-        $dog2 = Dog::borrowMe();
-        $this->assertFalse($dog2);
+        $dog = Dog::getInstance();
+        $dog->borrowMe();
 
+        $secondDog = Dog::getInstance();
+        $this->assertFalse($secondDog->borrowMe());
+
+    }
+
+    public function testItHasPrivateConstructor()
+    {
+        $reflectionOfDog = new \ReflectionClass('Singleton\Dog');
+        $method = $reflectionOfDog->getMethod('__construct');
+        $this->assertTrue($method->isProtected());
     }
 }

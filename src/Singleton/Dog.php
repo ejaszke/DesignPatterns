@@ -3,7 +3,7 @@
 namespace Singleton;
 
 /**
- * Dog
+ * Dog as an example of Singleton pattern
  * User: ed
  * Date: 06.11.15
  * Time: 18:05
@@ -12,9 +12,13 @@ class Dog
 {
     private static $instance;
     private $lent = false;
-    private $age = 7;
 
-    private static function getInstance()
+    protected function __construct()
+    {
+        throw new \Exception("Please use static accessor function ::getInstance");
+    }
+
+    public static function getInstance()
     {
         if (!self::$instance) {
             self::$instance= new Dog();
@@ -22,22 +26,14 @@ class Dog
         return self::$instance;
     }
 
-    public function getAge(integer $test): int
+    public function borrowMe()
     {
-	    return $this->age;
-
-    }
-
-    public static function borrowMe()
-    {
-        $dog = self::getInstance();
-
-        if (!$dog->lent) {
-            $dog->lent = true;
-            print("hurra, its awsome!!\n");
-            return $dog;
+        if (!$this->lent) {
+            $this->lent = true;
+            print("lent!!\n");
+            return true;
         } else {
-            print ("shit, I am busy at the moment\n");
+            print ("It's already lent\n");
             return false;
         }
     }
@@ -50,7 +46,7 @@ class Dog
             return true;
         } else {
             print("No, I am free, dont play with me with your dirty tricks\n");
-            return 2;
+            return false;
         }
     }
 
