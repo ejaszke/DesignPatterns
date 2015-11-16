@@ -15,15 +15,14 @@ class Dog
 
     protected function __construct()
     {
-        throw new \Exception("Please use static accessor function ::getInstance");
     }
 
     public static function getInstance()
     {
-        if (!self::$instance) {
-            self::$instance= new Dog();
+        if (!static::$instance) {
+            static::$instance = new static();
         }
-        return self::$instance;
+        return static::$instance;
     }
 
     public function borrowMe()
