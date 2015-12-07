@@ -28,4 +28,15 @@ class DogTest extends \PHPUnit_Framework_TestCase
         $method = $reflectionOfDog->getMethod('__construct');
         $this->assertTrue($method->isProtected());
     }
+
+    public function testItCantBeUnserialized()
+    {
+        $this->setExpectedException("\Exception");
+
+        $dog = Dog::getInstance();
+        $dog->borrowMe();
+        $serializedDog = serialize($dog);
+        $dog2 = unserialize($serializedDog);
+
+    }
 }

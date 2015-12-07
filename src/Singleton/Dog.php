@@ -17,6 +17,11 @@ class Dog
     {
     }
 
+    public function __wakeup()
+    {
+        throw new \Exception("Not illegal operation");
+    }
+
     public static function getInstance()
     {
         if (!static::$instance) {
