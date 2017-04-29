@@ -1,8 +1,9 @@
 <?php
 
-namespace Singleton\Tests;
+namespace Eddo\Singleton\Tests;
 
-use Singleton\Dog;
+use Eddo\Singleton\Dog;
+
 
 class DogTest extends \PHPUnit_Framework_TestCase
 {

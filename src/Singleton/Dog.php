@@ -1,6 +1,6 @@
 <?php
 
-namespace Singleton;
+namespace Eddo\Singleton;
 
 /**
  * Dog as an example of Singleton pattern
